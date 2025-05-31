@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contactos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->string('email')->nullable();
             $table->string('course')->nullable();
             $table->string('last_name');

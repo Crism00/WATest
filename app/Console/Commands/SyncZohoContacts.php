@@ -39,10 +39,11 @@ class SyncZohoContacts extends Command
             \App\Models\Contacto::updateOrCreate(
                 ['zoho_id' => $zohoContact['id']], // clave única
                 [
-                    'name' => $zohoContact['Last_Name'] ?? 'Sin Nombre',
+                    'name' => $zohoContact['First_Name'] ?? 'Sin Nombre',
                     'phone' => $zohoContact['Phone'] ?? null,
                     'email' => $zohoContact['Email'] ?? null,
-                    'course' => $zohoContact['Course__c'] ?? null,
+                    'course' => $zohoContact['Curso'] ?? null,
+                    'last_name' => $zohoContact['Last_Name'],
                     'zoho_id' => $zohoContact['id'], // almacenar el ID de Zoho
                 ]
             );

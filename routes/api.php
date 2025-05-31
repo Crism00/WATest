@@ -8,7 +8,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('contacts', 'App\Http\Controllers\ContactsController')->only(['index', 'store', 'update']);
+Route::resource('contacts', 'App\Http\Controllers\ContactsController')->only(['store', 'update']);
 
 Route::post('/zoho/webhook/contact', [ZohoWebHooksController::class, 'newContact'])
     ->name('zoho.webhook.contact');

@@ -12,7 +12,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
-
+Route::get('contacts', [App\Http\Controllers\ContactsController::class, 'index'])
+    ->name('contacts.index');
 
 
 require __DIR__.'/settings.php';
