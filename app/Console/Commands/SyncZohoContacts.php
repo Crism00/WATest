@@ -34,7 +34,10 @@ class SyncZohoContacts extends Command
         ])->get('https://www.zohoapis.com/crm/v2/Contacts');
 
         $contacts = $response->json('data');
-
+        if($response->failed() || empty($contacts)) {
+            $this->error('Error al obtener contactos de Zoho o no hay contactos disponibles.');
+            return;
+        }
         foreach ($contacts as $zohoContact) {
             \App\Models\Contacto::updateOrCreate(
                 ['zoho_id' => $zohoContact['id']], // clave única
